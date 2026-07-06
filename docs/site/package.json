@@ -4,9 +4,9 @@
 	"type": "module",
 	"scripts": {
 		"env": "bun run scripts/env.js",
-		"dev": "bun run env && node node_modules/vite/bin/vite.js dev",
-		"preview": "node node_modules/vite/bin/vite.js preview",
-		"build": "bun run env && node node_modules/vite/bin/vite.js build",
+		"dev": "bun run env && vite dev",
+		"preview": "vite preview",
+		"build": "bun run env && vite build",
 		"verify:site": "bun run scripts/verify-site.ts",
 		"verify:browser": "bun run scripts/verify-browser.ts",
 		"format": "prettier --write .",

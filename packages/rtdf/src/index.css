@@ -155,7 +155,7 @@ button:focus {
 }
 
 /* Generate all built-in themes */
-@plugin "rtdf/theme" {
+@plugin "./lib/theme/plugin.ts" {
 	all: true;
 }
 

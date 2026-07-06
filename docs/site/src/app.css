@@ -4,7 +4,7 @@
 @plugin "@tailwindcss/typography";
 
 /* RTDF 内置主题：生成所有 42 套主题 */
-@plugin "rtdf/theme" {
+@plugin "../../../packages/rtdf/src/lib/theme/plugin.ts" {
 	all: true;
 }
 
@@ -42,7 +42,7 @@
 }
 
 @theme {
-	/* RTDF 主题色：这些变量会被 @plugin "rtdf/theme" 通过 data-theme 覆盖 */
+	/* RTDF 主题色：这些变量会被主题插件通过 data-theme 覆盖 */
 	--color-primary-50: oklch(0.967 0.0296 264.886);
 	--color-primary-100: oklch(0.917 0.0444 264.886);
 	--color-primary-200: oklch(0.817 0.1036 264.886);
