@@ -8,6 +8,7 @@ import { fileURLToPath } from 'node:url';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const workspaceRoot = path.resolve(__dirname, '../../..');
+const siteNodeModules = path.resolve(__dirname, 'node_modules');
 
 export default defineConfig({
 	publicDir: 'static',
@@ -19,6 +20,13 @@ export default defineConfig({
 	],
 	resolve: {
 		alias: [
+			{ find: /^@any-tdf\/common$/, replacement: path.resolve(siteNodeModules, '@any-tdf/common/dist/index.js') },
+			{ find: /^@any-tdf\/common\/(.+)$/, replacement: path.resolve(siteNodeModules, '@any-tdf/common/dist/$1') },
+			{ find: /^@any-tdf\/react-confetti$/, replacement: path.resolve(siteNodeModules, '@any-tdf/react-confetti/dist/index.js') },
+			{ find: /^@any-tdf\/react-motion$/, replacement: path.resolve(siteNodeModules, '@any-tdf/react-motion/dist/index.js') },
+			{ find: /^@any-tdf\/react-motion\/(.+)$/, replacement: path.resolve(siteNodeModules, '@any-tdf/react-motion/dist/$1') },
+			{ find: /^@any-tdf\/site-common$/, replacement: path.resolve(siteNodeModules, '@any-tdf/site-common/dist/index.js') },
+			{ find: /^@any-tdf\/site-common\/(.+)$/, replacement: path.resolve(siteNodeModules, '@any-tdf/site-common/dist/$1') },
 			{ find: 'rtdf/components', replacement: path.resolve(__dirname, '../../packages/rtdf/src/lib/components') },
 			{ find: 'rtdf/theme', replacement: path.resolve(__dirname, '../../packages/rtdf/src/lib/theme') },
 			{ find: 'rtdf/types', replacement: path.resolve(__dirname, '../../packages/rtdf/src/lib/types') },

@@ -4,7 +4,7 @@
 @plugin "@tailwindcss/typography";
 
 /* RTDF 内置主题：生成所有 42 套主题 */
-@plugin "../../../packages/rtdf/src/lib/theme/plugin.ts" {
+@plugin "@any-tdf/common/theme/plugin" {
 	all: true;
 }
 
