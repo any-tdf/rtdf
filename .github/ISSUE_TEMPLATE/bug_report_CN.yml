@@ -1,0 +1,66 @@
+name: 缺陷报告
+description: 报告 RTDF 问题
+title: '[Bug]: '
+labels: ['bug']
+body:
+    - type: markdown
+      attributes:
+          value: |
+              感谢你抽出时间填写这份缺陷报告！如果你有使用问题，或者不确定是否真的是缺陷，请先确认：
+
+              - 你使用的是最新版代码。
+              - 你已经查看过开启与关闭状态的 Issue，确认没有重复问题。
+              - 如果 Issue 列表中已有相似问题，请在对应 Issue 中补充信息。
+              - 你对问题的表述简洁清晰。
+
+    - type: dropdown
+      id: module
+      attributes:
+          label: 模块
+          description: 此缺陷属于哪个模块？
+          options:
+              - rtdf (RTDF 组件)
+              - create-rtdf (RTDF 脚手架)
+              - vscode-extension (RTDF VS Code 插件)
+              - rtdf-skill (RTDF Skill)
+              - vite-plugin-svg-symbol (SVG Symbol 插件)
+              - demo (RTDF Demo)
+              - docs (RTDF 站点与文档)
+              - other (其他)
+      validations:
+          required: true
+
+    - type: input
+      id: version
+      attributes:
+          label: 版本
+          description: 如果此缺陷影响已发布的包，请注明版本。
+      validations:
+          required: false
+
+    - type: textarea
+      id: bug-description
+      attributes:
+          label: 描述缺陷
+          description: 请清晰简明地描述该缺陷内容。
+          placeholder: 当……
+      validations:
+          required: true
+
+    - type: textarea
+      id: reproduction
+      attributes:
+          label: 复现
+          description: 你可以使用文字、图片、简短视频，或 StackBlitz 或 CodePen 等在线 IDE 说明如何复现此问题。请尽量补充设备型号、操作系统版本、浏览器等环境信息。
+          placeholder: 在 iPhone 13 Pro 的 iOS 16 上……
+      validations:
+          required: true
+
+    - type: textarea
+      id: idea
+      attributes:
+          label: 你的想法
+          description: 如果你对该缺陷有解决方案或思路，可以在这里描述。
+          placeholder: 我认为……
+      validations:
+          required: false

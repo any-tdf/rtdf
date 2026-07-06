@@ -1,0 +1,58 @@
+name: 功能新增
+description: 提交一个新功能需求
+title: '[Feature]: '
+labels: ['enhancement']
+body:
+    - type: markdown
+      attributes:
+          value: |
+              感谢你抽出时间填写这份新功能请求！如果你有新的想法，或者不确定是否能实现，请先确认：
+
+              - 你已经查看最新版代码，确认没有此功能。
+              - 你已经查看过开启与关闭状态的 Issue，确认没有相同功能需求。
+              - 如果 Issue 列表中已有相似新功能，请在对应 Issue 中补充信息。
+              - 你对新功能的表述简洁清晰。
+
+    - type: dropdown
+      id: module
+      attributes:
+          label: 模块
+          description: 此新功能属于哪个模块？
+          options:
+              - rtdf (RTDF 组件)
+              - create-rtdf (RTDF 脚手架)
+              - vscode-extension (RTDF VS Code 插件)
+              - rtdf-skill (RTDF Skill)
+              - vite-plugin-svg-symbol (SVG Symbol 插件)
+              - demo (RTDF Demo)
+              - docs (RTDF 站点与文档)
+              - other (其他)
+      validations:
+          required: true
+
+    - type: textarea
+      id: description
+      attributes:
+          label: 新功能描述
+          description: 请清晰简明地描述该新功能内容。
+          placeholder: 当……
+      validations:
+          required: true
+
+    - type: textarea
+      id: example
+      attributes:
+          label: 示例
+          description: 你可以给出其他项目中的类似实现，方便大家理解你的想法。
+          placeholder: 在……
+      validations:
+          required: false
+
+    - type: textarea
+      id: idea
+      attributes:
+          label: 你的想法
+          description: 如果你对新功能有实现思路或任何想法，可以在这里描述。
+          placeholder: 我认为……
+      validations:
+          required: false

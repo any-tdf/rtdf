@@ -1,0 +1,761 @@
+@import 'tailwindcss';
+@custom-variant dark (&:where([data-mode=dark], [data-mode=dark] *):not(:where([data-mode=light], [data-mode=light] *):not([data-mode=dark], [data-mode=dark] *)));
+
+@plugin "@tailwindcss/typography";
+
+/* RTDF 内置主题：生成所有 42 套主题 */
+@plugin "rtdf/theme" {
+	all: true;
+}
+
+.theme-switch-grid {
+	grid-template-columns: minmax(0, 1fr);
+}
+
+.site-radius-swatch {
+	--site-radius-swatch-bg: oklab(0 0 0 / 0.05);
+	--site-radius-swatch-hover-bg: oklab(0 0 0 / 0.1);
+	background-color: var(--site-radius-swatch-bg);
+}
+
+.site-radius-swatch-inner {
+	background-color: oklab(0 0 0 / 0.1);
+}
+
+.group:hover .site-radius-swatch {
+	background-color: var(--site-radius-swatch-hover-bg);
+}
+
+:where([data-mode='dark'], [data-mode='dark'] *) .site-radius-swatch {
+	--site-radius-swatch-bg: oklab(1 0 0 / 0.05);
+	--site-radius-swatch-hover-bg: oklab(1 0 0 / 0.1);
+}
+
+:where([data-mode='dark'], [data-mode='dark'] *) .site-radius-swatch-inner {
+	background-color: oklab(1 0 0 / 0.1);
+}
+
+@media (min-width: 40rem) {
+	.theme-switch-grid {
+		grid-template-columns: auto auto auto;
+	}
+}
+
+@theme {
+	/* RTDF 主题色：这些变量会被 @plugin "rtdf/theme" 通过 data-theme 覆盖 */
+	--color-primary-50: oklch(0.967 0.0296 264.886);
+	--color-primary-100: oklch(0.917 0.0444 264.886);
+	--color-primary-200: oklch(0.817 0.1036 264.886);
+	--color-primary-300: oklch(0.717 0.1628 264.886);
+	--color-primary-400: oklch(0.617 0.222 264.886);
+	--color-primary-500: oklch(0.547 0.2664 264.886);
+	--color-primary: oklch(0.467 0.296 264.886);
+	--color-primary-700: oklch(0.387 0.2812 264.886);
+	--color-primary-800: oklch(0.317 0.2516 264.886);
+	--color-primary-900: oklch(0.267 0.222 264.886);
+	--color-primary-950: oklch(0.187 0.1776 264.886);
+
+	--color-dark-50: oklch(0.98 0.0153 80.597);
+	--color-dark-100: oklch(0.95 0.02295 80.597);
+	--color-dark-200: oklch(0.88 0.05355 80.597);
+	--color-dark-300: oklch(0.78 0.08415 80.597);
+	--color-dark-400: oklch(0.68 0.11475 80.597);
+	--color-dark-500: oklch(0.58 0.1377 80.597);
+	--color-dark: oklch(0.845 0.153 80.597);
+	--color-dark-700: oklch(0.765 0.14535 80.597);
+	--color-dark-800: oklch(0.695 0.13005 80.597);
+	--color-dark-900: oklch(0.645 0.11475 80.597);
+	--color-dark-950: oklch(0.565 0.0918 80.597);
+
+	--color-bg-base: oklch(0.967 0.0148 264.9);
+	--color-bg-surface: oklch(0.985 0.005 80.6);
+	--color-bg-overlay: oklch(0.955 0.005 80.6);
+	--color-bg-highlight: oklch(0.98 0.0089 264.9);
+	--color-bg-base-dark: oklch(0.15 0.0122 80.6);
+	--color-bg-surface-dark: oklch(0.22 0.0092 95.6);
+	--color-bg-overlay-dark: oklch(0.19 0.0077 80.6);
+	--color-bg-highlight-dark: oklch(0.08 0.0061 80.6);
+
+	--color-text-primary: oklch(0.144 0.0148 264.886);
+	--color-text-dark: oklch(0.917 0.03825 80.597);
+	--color-text-on-primary: oklch(0.883 0.04284 80.597);
+	--color-text-on-dark: oklch(0.189 0.05032 264.886);
+
+	--color-success: oklch(0.704 0.142 167.084);
+	--color-warning: oklch(0.558 0.153 47.186);
+	--color-error: oklch(0.564 0.223 28.46);
+	--color-info: oklch(0.482 0.14 261.518);
+
+	--radius-box: 0.75rem;
+	--radius-form: 0.5rem;
+	--radius-small: 0.25rem;
+
+	--color-blue: oklch(0.6 0.2 250); /* #3b6bff rgb(59, 107, 255) */
+	--color-purple: oklch(0.6 0.2 300); /* #b95cff rgb(185, 92, 255) */
+	--color-orange: oklch(0.7 0.18 50); /* #ff8c33 rgb(255, 140, 51) */
+	--color-cyan: oklch(0.7 0.15 190); /* #00b5b5 rgb(0, 181, 181) */
+
+	--color-black: oklch(0 0 0); /* #000000 rgb(0, 0, 0) */
+	--color-white: oklch(1 0 0); /* #FFFFFF rgb(255, 255, 255) */
+	--color-gray-50: oklch(0.961 0 0); /* #F5F5F5 rgb(245, 245, 245) */
+	--color-gray-100: oklch(0.925 0 0); /* #E8E8E8 rgb(232, 232, 232) */
+	--color-gray-200: oklch(0.845 0 0); /* #D1D1D1 rgb(209, 209, 209) */
+	--color-gray-300: oklch(0.767 0 0); /* #B8B8B8 rgb(184, 184, 184) */
+	--color-gray-400: oklch(0.683 0 0); /* #9E9E9E rgb(158, 158, 158) */
+	--color-gray-500: oklch(0.6 0 0); /* #858585 rgb(133, 133, 133) */
+	--color-gray-600: oklch(0.51 0 0); /* #6B6B6B rgb(107, 107, 107) */
+	--color-gray-700: oklch(0.42 0 0); /* #525252 rgb(82, 82, 82) */
+	--color-gray-800: oklch(0.321 0 0); /* #383838 rgb(56, 56, 56) */
+	--color-gray-900: oklch(0.218 0 0); /* #1F1F1F rgb(31, 31, 31) */
+	--color-gray-950: oklch(0.159 0 0); /* #121212 rgb(18, 18, 18) */
+	--color-transparent: transparent;
+
+	--color-bug1: oklch(0.579 0.214 27.172);
+	--color-bug2: oklch(0.749 0.162 66.986);
+	--color-bug3: oklch(0.912 0.192 103.116);
+	--color-bug4: oklch(0.779 0.141 229.596);
+	--color-tailwind: oklch(0.746 0.16 232.661);
+	--color-react: oklch(0.832 0.117 218.688);
+
+	/* 抖动动效 */
+	--animate-shake: shake 0.82s cubic-bezier(0.36, 0.07, 0.19, 0.97) both;
+	--animate-cmdk-fade: cmdkFade 0.2s ease-out both;
+	--animate-cmdk-scale: cmdkScale 0.3s ease-out 0.1s both;
+	@keyframes shake {
+		10%,
+		90% {
+			transform: translate3d(-1px, 0, 0);
+		}
+		20%,
+		80% {
+			transform: translate3d(2px, 0, 0);
+		}
+		30%,
+		50%,
+		70% {
+			transform: translate3d(-4px, 0, 0);
+		}
+		40%,
+		60% {
+			transform: translate3d(4px, 0, 0);
+		}
+	}
+	@keyframes cmdkFade {
+		from {
+			opacity: 0;
+		}
+		to {
+			opacity: 1;
+		}
+	}
+	@keyframes cmdkScale {
+		from {
+			opacity: 0;
+			transform: scale(0.95);
+		}
+		to {
+			opacity: 1;
+			transform: scale(1);
+		}
+	}
+
+	/* 闪电动效 */
+	--animate-lightning: lightning 3s linear infinite;
+	@keyframes lightning {
+		0% {
+			opacity: 0;
+		}
+		10% {
+			opacity: 1;
+		}
+		20% {
+			opacity: 0;
+		}
+		30% {
+			opacity: 1;
+		}
+		100% {
+			opacity: 0;
+		}
+	}
+
+	/* 路径动效 */
+	--animate-path: path 3s linear infinite;
+	@keyframes path {
+		0% {
+			stroke-dashoffset: 400;
+			fill: transparent;
+		}
+		31% {
+			stroke-dashoffset: 0;
+			fill: transparent;
+		}
+		32% {
+			stroke-dashoffset: 0;
+			fill: currentColor;
+			opacity: 1;
+		}
+		33% {
+			opacity: 0;
+		}
+		35% {
+			opacity: 1;
+		}
+		37% {
+			opacity: 0;
+		}
+		39% {
+			opacity: 1;
+		}
+		41% {
+			opacity: 0;
+		}
+		43% {
+			opacity: 1;
+		}
+		44% {
+			stroke-dashoffset: 0;
+			fill: currentColor;
+		}
+		99% {
+			stroke-dashoffset: 0;
+			fill: currentColor;
+		}
+		100% {
+			stroke-dashoffset: 400;
+			fill: transparent;
+		}
+	}
+
+	/* 动态背景动效 */
+	--animate-dynamicsBg: dynamicsBg 8s linear infinite;
+	@keyframes dynamicsBg {
+		0% {
+			transform: rotate(360deg);
+			height: 14rem;
+			width: 14rem;
+		}
+		50% {
+			height: 7rem;
+			width: 7rem;
+		}
+		100% {
+			transform: rotate(0deg);
+			height: 14rem;
+			width: 14rem;
+		}
+	}
+
+	/* 云朵移动动效 */
+	--animate-cloudMove: cloudMove 40s linear infinite;
+	@keyframes cloudMove {
+		0% {
+			transform: translateX(20%) translateY(-20%);
+		}
+		50% {
+			transform: translateX(-100%) translateY(-20%);
+		}
+		100% {
+			transform: translateX(20%) translateY(-20%);
+		}
+	}
+
+	/* 星星闪烁动效 */
+	--animate-starTwinkle: starTwinkle 8s linear infinite;
+	--animate-starTwinkle2: starTwinkle 3s linear infinite;
+	--animate-starTwinkle3: starTwinkle 6s linear infinite;
+	--animate-starTwinkle4: starTwinkle 4s linear infinite;
+	@keyframes starTwinkle {
+		0% {
+			opacity: 1;
+		}
+		40% {
+			opacity: 1;
+		}
+		50% {
+			opacity: 0;
+		}
+		60% {
+			opacity: 1;
+		}
+		100% {
+			opacity: 1;
+		}
+	}
+
+	/* 元素上下慢慢循环移动动效 */
+	--animate-elementUpDownMove1: elementUpDownMove 12s linear infinite;
+	--animate-elementUpDownMove2: elementUpDownMove 10s linear infinite -12s;
+	--animate-elementUpDownMove3: elementUpDownMove 12s linear infinite -14s;
+	--animate-elementUpDownMove4: elementUpDownMove 8s linear infinite -10s;
+	--animate-elementUpDownMove5: elementUpDownMove 10s linear infinite -8s;
+	--animate-elementUpDownMove6: elementUpDownMove 12s linear infinite -6s;
+	@keyframes elementUpDownMove {
+		0% {
+			transform: translateY(-20px);
+		}
+		50% {
+			transform: translateY(20px);
+		}
+		100% {
+			transform: translateY(-20px);
+		}
+	}
+
+	/* 渐变球动效 */
+	--animate-blob: blob 7s infinite;
+	@keyframes blob {
+		0% {
+			transform: translate(0px, 0px) scale(1);
+		}
+		33% {
+			transform: translate(30px, -50px) scale(1.1);
+		}
+		66% {
+			transform: translate(-20px, 20px) scale(0.9);
+		}
+		100% {
+			transform: translate(0px, 0px) scale(1);
+		}
+	}
+}
+
+.site-home-grid-bg {
+	background-image: linear-gradient(rgb(0 0 0 / 2%) 1px, transparent 1px), linear-gradient(90deg, rgb(0 0 0 / 2%) 1px, transparent 1px);
+	background-size: 80px 80px;
+}
+
+[data-mode='dark'] .site-home-grid-bg {
+	background-image:
+		linear-gradient(rgb(255 255 255 / 2%) 1px, transparent 1px), linear-gradient(90deg, rgb(255 255 255 / 2%) 1px, transparent 1px);
+}
+
+.site-min-not-found {
+	min-height: 60vh;
+}
+
+.site-fund-overlay {
+	position: absolute;
+	inset: 0.25rem;
+}
+
+.site-fund-qr {
+	width: 70%;
+}
+
+.site-external-link::after {
+	content: ' ↗';
+}
+
+.site-api-playground-grid {
+	grid-template-columns: 1fr;
+}
+
+.site-prose-clean .hljs {
+	background: transparent !important;
+}
+
+@media (min-width: 64rem) {
+	.site-api-playground-grid {
+		grid-template-columns: 5fr 4fr;
+	}
+}
+
+.confetti-container {
+	position: relative;
+	display: block;
+	width: 56px;
+	height: 56px;
+	pointer-events: none;
+}
+
+.confetti-piece {
+	position: absolute;
+	opacity: 0;
+	animation-name: confetti-fall;
+	animation-timing-function: ease-out;
+	animation-fill-mode: both;
+}
+
+@keyframes confetti-fall {
+	0% {
+		transform: translate(0, 0) rotate(0deg);
+		opacity: 1;
+	}
+	100% {
+		transform: translate(var(--confetti-x, 0px), var(--confetti-y, 40px)) rotate(360deg);
+		opacity: 0;
+	}
+}
+
+@source "./**/*.{ts,tsx,html}";
+@source "../../mds/**/*.md";
+@source "../../../packages/rtdf/src/**/*.{ts,tsx}";
+@source "../../../packages/rtdf/dist/**/*.{js,ts,tsx}";
+@source "../../../packages/rtdf/src/index.css";
+@source "../node_modules/@any-tdf/common/dist/**/*.{js,ts,tsx,vue,svelte}";
+@source inline("bg-bg-surface dark:bg-bg-surface-dark bg-bg-surface-dark dark:bg-bg-surface text-text-primary dark:text-text-dark text-text-primary/50 dark:text-text-dark/50 text-text-primary/70 dark:text-text-dark/70 text-text-dark dark:text-text-primary text-text-dark/50 dark:text-text-primary/50 text-text-dark/70 dark:text-text-primary/70 hover:bg-text-primary/5 dark:hover:bg-text-dark/5 active:bg-text-primary/10 dark:active:bg-text-dark/10 hover:bg-text-dark/5 dark:hover:bg-text-primary/5 active:bg-text-dark/10 dark:active:bg-text-primary/10");
+
+/* 动画延迟类 */
+.animation-delay-2000 {
+	animation-delay: 2s;
+}
+.animation-delay-4000 {
+	animation-delay: 4s;
+}
+
+pre {
+	background-color: transparent;
+	padding: 0;
+}
+
+*::-webkit-scrollbar {
+	width: 4px;
+}
+
+*::-webkit-scrollbar-thumb {
+	border-radius: 2px;
+	background-color: rgba(133, 133, 133, 0.5);
+}
+
+*::-webkit-scrollbar-track {
+	background-color: rgba(133, 133, 133, 0.2);
+}
+
+html {
+	overflow-x: hidden;
+	overflow-y: overlay;
+	/*scrollbar-gutter: stable;*/
+	/* scrollbar-gutter: stable both-edges; */
+	-webkit-tap-highlight-color: transparent;
+}
+* {
+	scrollbar-width: thin;
+}
+
+.prose {
+	color: inherit;
+}
+
+.prose :where(h1, h2, h3, h4, h5, h6):not(:where([class~='not-prose'] *)) {
+	color: inherit;
+}
+
+.prose :where(code):not(:where([class~='not-prose'] *))::before {
+	content: '' !important;
+}
+
+.prose :where(code):not(:where([class~='not-prose'] *))::after {
+	content: '' !important;
+}
+
+.prose :where(code):not(:where([class~='not-prose'] *, pre *)) {
+	padding-left: 4px;
+	padding-right: 4px;
+	border-radius: 2px;
+	background: rgba(0, 0, 0, 0.05) !important;
+	font-size: 0.8em;
+}
+
+.prose pre code {
+	font-size: 0.8em;
+}
+
+[data-mode='dark'] .prose :where(code):not(:where([class~='not-prose'] *, pre *)) {
+	background: rgba(255, 255, 255, 0.05) !important;
+}
+
+/*!
+  Theme: GitHub Light
+*/
+.prose pre code.hljs {
+	display: block;
+	overflow-x: auto;
+	padding: 1em;
+}
+
+.prose code.hljs {
+	padding: 3px 5px;
+}
+
+.prose .hljs {
+	background: rgba(0, 0, 0, 0.05) !important;
+	color: #434f54;
+}
+
+.prose .hljs-subst {
+	color: #434f54;
+}
+
+.prose .hljs-attribute,
+.prose .hljs-doctag,
+.prose .hljs-keyword,
+.prose .hljs-name,
+.prose .hljs-selector-tag {
+	/* color: #00979d; */
+	/* color: #0B24FB; */
+	/* color: #ff3e00; */
+	color: #af10a7;
+}
+
+.prose .hljs-addition,
+.prose .hljs-built_in,
+.prose .hljs-bullet,
+.prose .hljs-code,
+.prose .hljs-literal {
+	color: #d35400;
+}
+
+.prose .hljs-link,
+.prose .hljs-regexp,
+.prose .hljs-selector-attr,
+.prose .hljs-selector-pseudo,
+.prose .hljs-symbol,
+.prose .hljs-template-variable,
+.prose .hljs-variable {
+	/* color: #00979d; */
+	color: #0b24fb;
+	/* font-weight: bold; */
+	/* color: #8a3ce2; */
+}
+
+.prose .hljs-deletion,
+.prose .hljs-quote,
+.prose .hljs-selector-class,
+.prose .hljs-selector-id,
+.prose .hljs-string,
+.prose .hljs-template-tag,
+.prose .hljs-type {
+	/* color: #005c5f; */
+	color: rgb(56, 189, 248);
+}
+
+.prose .hljs-comment {
+	color: rgba(149, 165, 166, 0.8);
+}
+
+.prose .hljs-meta .hljs-keyword {
+	color: #728e00;
+}
+
+.prose .hljs-meta {
+	color: #434f54;
+}
+
+.prose .hljs-emphasis {
+	font-style: italic;
+}
+
+.prose .hljs-strong {
+	font-weight: 700;
+}
+
+.prose .hljs-function {
+	color: #728e00;
+}
+
+.prose .hljs-section,
+.prose .hljs-title {
+	/* color: #800; */
+	color: #0b24fb;
+	font-weight: 700;
+}
+
+.prose .hljs-number {
+	color: #8a7b52;
+}
+
+[data-mode='dark'] .prose pre code.hljs {
+	display: block;
+	overflow-x: auto;
+	padding: 1em;
+}
+
+[data-mode='dark'] .prose code.hljs {
+	padding: 3px 5px;
+}
+
+/*!
+  Theme: GitHub Dark
+*/
+[data-mode='dark'] .prose .hljs {
+	color: #c9d1d9;
+	background: rgba(255, 255, 255, 0.05) !important;
+}
+
+[data-mode='dark'] .prose .hljs-doctag,
+[data-mode='dark'] .prose .hljs-keyword,
+[data-mode='dark'] .prose .hljs-meta .hljs-keyword,
+[data-mode='dark'] .prose .hljs-template-tag,
+[data-mode='dark'] .prose .hljs-template-variable,
+[data-mode='dark'] .prose .hljs-type,
+[data-mode='dark'] .prose .hljs-variable.language_ {
+	/* color: #ff7b72; */
+	color: #ffc043;
+}
+
+[data-mode='dark'] .prose .hljs-title,
+[data-mode='dark'] .prose .hljs-title.class_,
+[data-mode='dark'] .prose .hljs-title.class_.inherited__,
+[data-mode='dark'] .prose .hljs-title.function_ {
+	color: #d2a8ff;
+}
+
+[data-mode='dark'] .prose .hljs-attr,
+[data-mode='dark'] .prose .hljs-attribute,
+[data-mode='dark'] .prose .hljs-literal,
+[data-mode='dark'] .prose .hljs-meta,
+[data-mode='dark'] .prose .hljs-number,
+[data-mode='dark'] .prose .hljs-operator,
+[data-mode='dark'] .prose .hljs-selector-attr,
+[data-mode='dark'] .prose .hljs-selector-class,
+[data-mode='dark'] .prose .hljs-selector-id,
+[data-mode='dark'] .prose .hljs-variable {
+	color: #79c0ff;
+}
+
+[data-mode='dark'] .prose .hljs-meta .hljs-string,
+[data-mode='dark'] .prose .hljs-regexp,
+[data-mode='dark'] .prose .hljs-string {
+	color: #a5d6ff;
+}
+
+[data-mode='dark'] .prose .hljs-built_in,
+[data-mode='dark'] .prose .hljs-symbol {
+	color: #ffa657;
+}
+
+[data-mode='dark'] .prose .hljs-code,
+[data-mode='dark'] .prose .hljs-comment,
+[data-mode='dark'] .prose .hljs-formula {
+	color: #8b949e;
+}
+
+[data-mode='dark'] .prose .hljs-name,
+[data-mode='dark'] .prose .hljs-quote,
+[data-mode='dark'] .prose .hljs-selector-pseudo,
+[data-mode='dark'] .prose .hljs-selector-tag {
+	color: #7ee787;
+}
+
+[data-mode='dark'] .prose .hljs-subst {
+	color: #c9d1d9;
+}
+
+[data-mode='dark'] .prose .hljs-section {
+	color: #1f6feb;
+	font-weight: 700;
+}
+
+[data-mode='dark'] .prose .hljs-bullet {
+	color: #f2cc60;
+}
+
+[data-mode='dark'] .prose .hljs-emphasis {
+	color: #c9d1d9;
+	font-style: italic;
+}
+
+[data-mode='dark'] .prose .hljs-strong {
+	color: #c9d1d9;
+	font-weight: 700;
+}
+
+[data-mode='dark'] .prose .hljs-addition {
+	color: #aff5b4;
+	background-color: #033a16;
+}
+
+[data-mode='dark'] .prose .hljs-deletion {
+	color: #ffdcd7;
+	background-color: #67060c;
+}
+
+/* Theme System preview overrides */
+[data-mode='light'] .bg-primary,
+[data-mode='light'] .dark\:bg-dark {
+	background-color: var(--color-primary) !important;
+}
+[data-mode='light'] .text-primary,
+[data-mode='light'] .dark\:text-dark {
+	color: var(--color-primary) !important;
+}
+[data-mode='light']
+	.border-primary:not(.border-t-transparent):not(.border-b-transparent):not(.border-l-transparent):not(.border-r-transparent),
+[data-mode='light']
+	.dark\:border-dark:not(.border-t-transparent):not(.border-b-transparent):not(.border-l-transparent):not(.border-r-transparent) {
+	border-color: var(--color-primary) !important;
+}
+[data-mode='light'] .fill-primary,
+[data-mode='light'] .dark\:fill-dark {
+	fill: var(--color-primary) !important;
+}
+[data-mode='light'] .stroke-primary,
+[data-mode='light'] .dark\:stroke-dark {
+	stroke: var(--color-primary) !important;
+}
+[data-mode='light'] .bg-surface,
+[data-mode='light'] .dark\:bg-surface-dark {
+	background-color: var(--color-bg-surface) !important;
+}
+[data-mode='light'] .text-on-primary,
+[data-mode='light'] .dark\:text-on-dark {
+	color: var(--color-text-on-primary) !important;
+}
+[data-mode='light'] .dark\:text-white {
+	color: inherit !important;
+}
+[data-mode='light'] .dark\:text-gray-100,
+[data-mode='light'] .dark\:text-gray-200,
+[data-mode='light'] .dark\:text-gray-300,
+[data-mode='light'] .dark\:text-gray-400,
+[data-mode='light'] .dark\:text-gray-500 {
+	color: inherit !important;
+}
+[data-mode='light'] .dark\:bg-surface-dark,
+[data-mode='light'] .dark\:bg-bg-surface-dark {
+	background-color: var(--color-bg-surface) !important;
+}
+[data-mode='light'] .dark\:bg-white\/5 {
+	background-color: rgba(0, 0, 0, 0.05) !important;
+}
+[data-mode='light'] .dark\:bg-white\/10 {
+	background-color: rgba(0, 0, 0, 0.05) !important;
+}
+[data-mode='light'] .dark\:bg-dark\/5 {
+	background-color: color-mix(in oklch, var(--color-primary) 5%, transparent) !important;
+}
+[data-mode='light'] .dark\:border-white\/5 {
+	border-color: rgba(0, 0, 0, 0.05) !important;
+}
+[data-mode='light'] .dark\:border-white\/10 {
+	border-color: rgba(0, 0, 0, 0.1) !important;
+}
+[data-mode='light'] .dark\:shadow-white\/5,
+[data-mode='light'] .dark\:shadow-white\/10,
+[data-mode='light'] .dark\:shadow-white\/20 {
+	--tw-shadow-color: rgba(0, 0, 0, 0.1) !important;
+}
+
+[data-mode='dark'] .bg-primary {
+	background-color: var(--color-dark) !important;
+}
+[data-mode='dark'] .text-primary {
+	color: var(--color-dark) !important;
+}
+[data-mode='dark']
+	.border-primary:not(.border-t-transparent):not(.border-b-transparent):not(.border-l-transparent):not(.border-r-transparent) {
+	border-color: var(--color-dark) !important;
+}
+[data-mode='dark'] .fill-primary {
+	fill: var(--color-dark) !important;
+}
+[data-mode='dark'] .stroke-primary {
+	stroke: var(--color-dark) !important;
+}
+[data-mode='dark'] .bg-surface {
+	background-color: var(--color-bg-surface-dark) !important;
+}
+[data-mode='dark'] .text-on-primary {
+	color: var(--color-text-on-dark) !important;
+}

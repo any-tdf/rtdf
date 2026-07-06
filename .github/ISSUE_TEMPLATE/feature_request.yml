@@ -1,0 +1,58 @@
+name: Feature Request
+description: Submit a request for a new feature
+title: '[Feature]: '
+labels: ['enhancement']
+body:
+    - type: markdown
+      attributes:
+          value: |
+              Thank you for taking the time to fill out this feature request. If you have a new idea or are unsure if it can be implemented, please make sure:
+
+              - You have checked the latest version of the code and confirmed that the feature does not exist.
+              - You have checked the open and closed issues to see if the feature has already been requested.
+              - If there is a similar feature request in the issues list, please provide additional information in the corresponding issue.
+              - Your description of the new feature is concise and clear.
+
+    - type: dropdown
+      id: module
+      attributes:
+          label: Module
+          description: Which module does this feature belong to?
+          options:
+              - rtdf (RTDF components)
+              - create-rtdf (RTDF scaffolding)
+              - vscode-extension (RTDF VS Code extension)
+              - rtdf-skill (RTDF Skill)
+              - vite-plugin-svg-symbol (SVG Symbol plugin)
+              - demo (RTDF demo)
+              - docs (RTDF site and documentation)
+              - other (other)
+      validations:
+          required: true
+
+    - type: textarea
+      id: description
+      attributes:
+          label: Feature Description
+          description: Please describe the feature clearly and concisely.
+          placeholder: When...
+      validations:
+          required: true
+
+    - type: textarea
+      id: example
+      attributes:
+          label: Example
+          description: You can provide similar implementations from other projects to help others understand your idea.
+          placeholder: In...
+      validations:
+          required: false
+
+    - type: textarea
+      id: idea
+      attributes:
+          label: Your Idea
+          description: If you have implementation ideas or thoughts about the feature, you can describe them here.
+          placeholder: I think...
+      validations:
+          required: false

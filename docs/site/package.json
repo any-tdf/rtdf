@@ -1,0 +1,56 @@
+{
+	"name": "site",
+	"version": "0.0.1",
+	"type": "module",
+	"scripts": {
+		"env": "bun run scripts/env.js",
+		"dev": "bun run env && node node_modules/vite/bin/vite.js dev",
+		"preview": "node node_modules/vite/bin/vite.js preview",
+		"build": "bun run env && node node_modules/vite/bin/vite.js build",
+		"verify:site": "bun run scripts/verify-site.ts",
+		"verify:browser": "bun run scripts/verify-browser.ts",
+		"format": "prettier --write .",
+		"lint": "prettier --check . && eslint ."
+	},
+	"dependencies": {
+		"@any-tdf/common": "alpha",
+		"@any-tdf/react-confetti": "alpha",
+		"@any-tdf/react-motion": "alpha",
+		"@any-tdf/site-common": "alpha",
+		"rtdf": "file:../../packages/rtdf",
+		"react": "^19.1.0",
+		"react-dom": "^19.1.0",
+		"react-router-dom": "^7.6.0"
+	},
+	"devDependencies": {
+		"@any-tdf/vite-plugin-md-ts": "^0.0.2",
+		"@any-tdf/vite-plugin-svg-symbol": "^0.0.3",
+		"@eslint/compat": "^1.4.1",
+		"@tailwindcss/typography": "^0.5.19",
+		"@tailwindcss/vite": "^4.1.18",
+		"@types/node": "^22.10.5",
+		"@types/react": "^19.1.4",
+		"@types/react-dom": "^19.1.5",
+		"@vitejs/plugin-react": "^4.4.1",
+		"beautify-qrcode": "^1.0.3",
+		"clipboard": "^2.0.11",
+		"eslint": "^9.39.2",
+		"eslint-config-prettier": "^9.1.2",
+		"eslint-plugin-react": "^7.37.2",
+		"eslint-plugin-react-hooks": "^5.0.0",
+		"globals": "^15.15.0",
+		"highlight.js": "^11.11.1",
+		"prettier": "3.5.3",
+		"prettier-plugin-tailwindcss": "^0.6.14",
+		"tailwindcss": "^4.1.18",
+		"typescript": "^5.9.3",
+		"typescript-eslint": "^8.53.1",
+		"vite": "^6.4.1"
+	},
+	"overrides": {
+		"@any-tdf/common": "alpha",
+		"@any-tdf/react-confetti": "alpha",
+		"@any-tdf/react-motion": "alpha",
+		"@any-tdf/site-common": "alpha"
+	}
+}

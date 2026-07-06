@@ -1,0 +1,66 @@
+name: Bug Report
+description: Report an issue with RTDF
+title: '[Bug]: '
+labels: ['bug']
+body:
+    - type: markdown
+      attributes:
+          value: |
+              Thank you for taking the time to fill out this bug report. If you have a usage question or are unsure if it is really a bug, please make sure:
+
+              - You are using the latest version of the code.
+              - You have checked the open and closed issues to see if your issue has already been reported.
+              - If there is a similar issue in the issues list, please provide additional information in the corresponding issue.
+              - Your description of the problem is concise and clear.
+
+    - type: dropdown
+      id: module
+      attributes:
+          label: Module
+          description: Which module does this bug belong to?
+          options:
+              - rtdf (RTDF components)
+              - create-rtdf (RTDF scaffolding)
+              - vscode-extension (RTDF VS Code extension)
+              - rtdf-skill (RTDF Skill)
+              - vite-plugin-svg-symbol (SVG Symbol plugin)
+              - demo (RTDF demo)
+              - docs (RTDF site and documentation)
+              - other (other)
+      validations:
+          required: true
+
+    - type: input
+      id: version
+      attributes:
+          label: Version
+          description: If this bug affects a released package, please indicate the version.
+      validations:
+          required: false
+
+    - type: textarea
+      id: bug-description
+      attributes:
+          label: Bug Description
+          description: Please describe the bug clearly and concisely.
+          placeholder: When...
+      validations:
+          required: true
+
+    - type: textarea
+      id: reproduction
+      attributes:
+          label: Reproduction
+          description: You can use text, images, short videos, StackBlitz, CodePen, or another online IDE to explain how to reproduce the issue. Please include the device model, operating system version, browser, and other relevant environment information.
+          placeholder: On iPhone 13 Pro with iOS 16...
+      validations:
+          required: true
+
+    - type: textarea
+      id: idea
+      attributes:
+          label: Your Idea
+          description: If you have a solution or idea for this bug, you can describe it here.
+          placeholder: I think...
+      validations:
+          required: false

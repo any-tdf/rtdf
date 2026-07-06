@@ -1,0 +1,61 @@
+{
+	"name": "rtdf-vscode-extension",
+	"displayName": "RTDF for VS Code",
+	"description": "A VS Code extension to facilitate RTDF development",
+	"version": "0.0.1",
+	"publisher": "RTDF",
+	"main": "./src/extension.js",
+	"engines": {
+		"vscode": "^1.80.0"
+	},
+	"scripts": {
+		"files": "node scripts/files.js",
+		"package": "vsce package",
+		"publish": "vsce publish"
+	},
+	"categories": [
+		"Programming Languages"
+	],
+	"activationEvents": [
+		"onLanguage:typescriptreact",
+		"onLanguage:javascriptreact"
+	],
+	"sponsor": {
+		"url": "https://rtdf.dev?fund"
+	},
+	"keywords": [
+		"react",
+		"rtdf",
+		"component",
+		"api",
+		"javascript",
+		"typescript"
+	],
+	"contributes": {
+		"commands": [],
+		"configuration": {
+			"type": "object",
+			"title": "RTDF",
+			"properties": {
+				"RTDF.English": {
+					"type": "boolean",
+					"default": false,
+					"description": "Whether to enable English API docs in rtdf-vscode-extension"
+				}
+			}
+		}
+	},
+	"devDependencies": {
+		"@types/vscode": "^1.80.0",
+		"@vscode/vsce": "^3.6.5"
+	},
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/any-tdf/rtdf/tree/main/packages/vscode-extension"
+	},
+	"bugs": {
+		"url": "https://github.com/any-tdf/rtdf/issues?q=is:issue+is:open+vscode"
+	},
+	"homepage": "https://github.com/any-tdf/rtdf/tree/main/packages/vscode-extension/README.md",
+	"license": "MIT"
+}

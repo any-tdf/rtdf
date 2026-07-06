@@ -1,0 +1,34 @@
+{
+	"name": "rtdf-skill",
+	"version": "0.0.1",
+	"description": "AI Skill package for building with RTDF, React and Tailwind CSS 4.",
+	"author": "any-tdf",
+	"license": "MIT",
+	"type": "module",
+	"files": [
+		"skill",
+		"README.md"
+	],
+	"scripts": {
+		"generate:components": "bun scripts/generate-components-reference.mjs",
+		"generate:themes": "bun scripts/generate-theme-data.mjs",
+		"validate": "bun scripts/validate.mjs",
+		"test:theme": "bun scripts/test-theme.mjs"
+	},
+	"keywords": [
+		"rtdf",
+		"skill",
+		"ai",
+		"codex",
+		"react",
+		"tailwindcss"
+	],
+	"homepage": "https://rtdf.dev",
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/any-tdf/rtdf"
+	},
+	"engines": {
+		"node": ">=18.18"
+	}
+}
